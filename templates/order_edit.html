@@ -1,0 +1,27 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="{{url_for('home')}}" class="active">Home</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Edit Order</h2>
+										</header>
+										<p>
+ 											{{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+										</p>
+									</div>
+								</div>
+							</section>
+					</div>
+
+{% include "footer.html" %}

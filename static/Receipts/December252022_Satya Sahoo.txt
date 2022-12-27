@@ -1,0 +1,2 @@
+[('Cappuccino', 2, '6')]
+Total Price: 6.0

@@ -1,0 +1,75 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="{{url_for('home')}}" class="active">Home</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Order Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>All Orders</h2>
+									<table>
+										<tr>
+											<td>Id</td>
+											<td>User Name</td>
+											<td>Date</td>
+											<td>Coffee Type</td>
+											<td>Quantity</td>
+											<td>Price EUR</td>
+											<td>Payment Status</td>
+										</tr>
+										{% for order in orders %}
+										<tr>
+											<td><a href="{{ url_for('order_edit', order_id=order.id) }}">{{order.id}}</a></td>
+											<td>{{order.user.name}}</td>
+											<td>{{order.date}}</td>
+											<td>{{order.coffee_type}}</td>
+											<td>{{order.quantity}}</td>
+											<td>{{order.price}}</td>
+											<td>{{order.payment_status}}</td>
+										</tr>
+										{% endfor %}
+									</table>
+								</header>
+							</section>
+						<!-- Edit Users Section -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Edit Users / Make Fetcher</h2>
+										</header>
+										<p>
+											{% for user in users %}
+											{% if user.fetcher == "True" %}
+											<h2><b><a href="{{ url_for('admin_edit', user_id=user.id) }}">{{user.name}}</a></b></h2>
+											{% else %}
+											<h2><a href="{{ url_for('admin_edit', user_id=user.id) }}">{{user.name}}</a></h2>
+											{% endif %}
+											{% endfor %}
+										</p>
+									</div>
+								</div>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="{{url_for('logout')}}" class="button">Logout</a></li>
+										<li>
+										{{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+										{% with messages = get_flashed_messages() %}
+										{% if messages %}
+										{% for message in messages %}
+										<p>{{ message }}</p>
+										{% endfor %}
+										{% endif %}
+										{% endwith %}
+										</li>
+									</ul>
+								</footer>
+							</section>
+					</div>
+
+{% include "footer.html" %}

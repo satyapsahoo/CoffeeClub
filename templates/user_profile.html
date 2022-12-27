@@ -1,0 +1,99 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="{{url_for('home')}}" class="active">Home</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Order Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Open Orders</h2>
+									<table>
+										<tr>
+											<td>Id</td>
+											<td>User Name</td>
+											<td>Date</td>
+											<td>Coffee Type</td>
+											<td>Quantity</td>
+											<td>Price EUR</td>
+											<td>Payment Status</td>
+										</tr>
+										{% for order in orders %}
+										{% if order.payment_status == "Open" %}
+										<tr>
+											<td><a href="{{ url_for('order_edit', order_id=order.id) }}">{{order.id}}</a></td>
+											<td>{{order.user.name}}</td>
+											<td>{{order.date}}</td>
+											<td>{{order.coffee_type}}</td>
+											<td>{{order.quantity}}</td>
+											<td>{{order.price}}</td>
+											<td>{{order.payment_status}}</td>
+										</tr>
+										{% endif %}
+										{% endfor %}
+									</table>
+								</header>
+								<footer class="major">
+									<ul class="actions special">
+										{% if user.fetcher == "True" %}
+            							<li><a href="{{ url_for('make_receipt') }}" class="button">Make Receipt</a></li>
+										{% endif %}
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<table>
+											<tr>
+												<td>
+													<header class="major">
+														<h2>User Profile</h2>
+													</header>
+													<p>
+														<ul>
+															<li> Name: {{user.name}}</li>
+															<li> Email: {{user.email}}</li>
+															<li> Mobile: {{user.mobile}}</li>
+														</ul>
+													</p>
+												</td>
+												<td>
+													<header class="major">
+														<h2>Place Order</h2>
+													</header>
+													{{ wtf.quick_form(oform, novalidate=True, button_map={"submit": "primary"}) }}
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<footer class="major">
+									<ul class="actions special">
+										{% if current_user.id == 1 %}
+            							<li><a href="{{url_for('admin_page')}}" class="button">Admin Page</a></li>
+										{% else %}
+										<li><a href="{{url_for('edit_profile')}}" class="button">Edit Profile</a></li>
+										<li><a href="{{url_for('logout')}}" class="button">Logout</a></li>
+									</ul>
+									<table>
+										<tr>
+											<td>
+												{{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+											</td>
+											<td>User can change his / her password. </td>
+										</tr>
+									</table>
+										{% endif %}
+									</ul>
+								</footer>
+							</section>
+					</div>
+
+{% include "footer.html" %}

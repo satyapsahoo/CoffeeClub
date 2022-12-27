@@ -1,0 +1,103 @@
+{% include "header.html" %}
+
+                <!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introduction</a></li>
+							<li><a href="#first">Members</a></li>
+							<li><a href="#second">Coffee</a></li>
+							<li><a href="#cta">Downloads</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Coffee Club</h2>
+										</header>
+										<p>
+										To all coffee enthusiasts! Thank you for taking time out to know about us.
+										</p>
+										Club Activities!
+										<ul>
+										    <li>Activity 1</li>
+										    <li>Activity 2</li>
+										    <li>Activity 3</li>
+										</ul>
+										<ul class="actions">
+											<li><a href="{{url_for('cc')}}" class="button">Learn More</a></li>
+										</ul>
+									</div>
+									<span class="image"><img src="{{ url_for('static', filename='images/coffee.jpg') }}" alt="" /></span>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Members</h2>
+								</header>
+								<ul class="features">
+									<li>
+										<span class="icon solid major style1 fa-coffee"></span>
+										<h3><a href="#">New Order</a></h3>
+										<p>Place new order here.</p>
+									</li>
+									<li>
+										<span class="icon solid major style3 fa-coffee"></span>
+										<h3><a href="#">Past Orders</a></h3>
+										<p>Check you past orders and payment status.</p>
+									</li>
+									<li>
+										<span class="icon solid major style5 fa-file"></span>
+										<h3><a href="#">Admin Corner</a></h3>
+										<p>This section is reserved for Admin only.</p>
+									</li>
+								</ul>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="{{url_for('register')}}" class="button primary">Register</a></li>
+										<li><a href="{{url_for('login')}}" class="button">Login</a></li>
+										<li><a href="{{url_for('logout')}}" class="button">Logout</a></li>
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Second Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Coffee</h2>
+									<p>Coffee Price List</p>
+								</header>
+
+								<footer class="major">
+									<ul class="actions special">
+									    <li><a href="#" target="_blank">Blank</a></li>
+										<li><a href="#" target="_blank">Blank</a></li>
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Downloads -->
+							<section id="cta" class="main special">
+								<header class="major">
+									<h2>Downloads</h2>
+									<p></p>
+								</header>
+
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="#" target="_blank">Price List</a></li>
+										<li><a href="#" target="_blank">Blank</a></li>
+									</ul>
+								</footer>
+							</section>
+
+					</div>
+
+{% include "footer.html" %}

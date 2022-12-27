@@ -1,0 +1,35 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="{{url_for('home')}}" class="active">Home</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Login Form</h2>
+										</header>
+										        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+                                                {% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                      {% for message in messages %}
+                                                       <p>{{ message }}</p>
+                                                      {% endfor %}
+                                                    {% endif %}
+                                                {% endwith %}
+									</div>
+									<span class="image"><img src="{{ url_for('static', filename='images/coffee.jpg') }}" alt="" /></span>
+								</div>
+								<footer class="major">
+								</footer>
+							</section>
+					</div>
+
+{% include "footer.html" %}
