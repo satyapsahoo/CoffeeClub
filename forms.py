@@ -1,10 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, EmailField, IntegerField, SelectField
-from wtforms.validators import DataRequired, URL
-from flask_ckeditor import CKEditorField
+from wtforms.validators import DataRequired
 
 
-# WTForm
+# WTForm from flask bootstrap. WTForm is easier to handle than html forms.
 class RegisterForm(FlaskForm):
     email = EmailField("Email*", validators=[DataRequired()])
     password = PasswordField("Password*", validators=[DataRequired()])
