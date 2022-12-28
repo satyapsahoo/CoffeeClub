@@ -17,7 +17,8 @@ from notification import Notification
 # Initiate the flask app with bootstrap and wtf forms
 # Secret key is to be stored in environ variable, it can be anything e.g. q1w2e3r4
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+# app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = "q1w2e3r4"
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
