@@ -22,10 +22,17 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 
 # CONNECT TO SQLITE DB from Pycharm, club.db is in the project folder
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///club.db")
-# CONNECT TO Postgresql DB from Pycharm, current path is for local postgres, change to azure postgres
-# Azure postgres learning link: https://www.jetbrains.com/help/pycharm/azure-sql-database.html
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///club.db")
+# CONNECT TO Local Postgresql DB from Pycharm
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/coffeeclubdb'
+# CONNECT TO Azure Postgres DB
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
+    dbuser=os.environ['DBUSER'],
+    dbpass=os.environ['DBPASS'],
+    dbhost=os.environ['DBHOST'] + ".postgres.database.azure.com",
+    dbname=os.environ['DBNAME']
+)
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
